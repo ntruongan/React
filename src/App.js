@@ -8,7 +8,23 @@ class Demo extends Component{
     alert(this.refs.name.value);
     console.log(this.refs.name.value);
   };
+
+  s4(){
+    return Math.floor((1+Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+  generateID(){
+    return this.s4() + '-' +
+          this.s4() + '-' +
+          this.s4() + '-' +
+          this.s4();
+  }
+
+
+
+
   render(){
+    localStorage.setItem('id', this.generateID());
     var products = [
       {
         id : 1,
@@ -58,20 +74,8 @@ class Demo extends Component{
     return(
         <div>
           <Header/>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">     
-          <div class="panel panel-default">
-                  <div class="panel-body">
-                    <label for="a">Nhập thông tin</label>
-                    <input type="text" class="form-control" id="a" placeholder="Input field" ref = "name"></input>
-                  </div>
-
-                </div>      
-
-              <button type="submit" class="btn btn-primary" onClick = {this.onAddProduct}>Lưu</button>
-
-          </div>
           <div>
-            { elements }
+            <Dial></Dial>>
           </div>
           
         </div>  
